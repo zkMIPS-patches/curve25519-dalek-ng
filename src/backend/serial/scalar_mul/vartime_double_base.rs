@@ -64,11 +64,11 @@ pub fn mul(a: &Scalar, A: &EdwardsPoint, b: &Scalar) -> EdwardsPoint {
 }
 
 #[cfg(all(target_os = "zkvm"))]
-use zkm2_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint};
+use zkm_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint};
 #[cfg(all(target_os = "zkvm"))]
 /// Compute \\(aA + bB\\) in variable time, where \\(B\\) is the Ed25519 basepoint.
 ///
-/// Accelerated with ZKM2's EdAdd syscall.
+/// Accelerated with zkMIPS's EdAdd syscall.
 #[allow(non_snake_case)]
 pub fn mul(a: &Scalar, A: &EdwardsPoint, b: &Scalar) -> EdwardsPoint {
     let A: Ed25519AffinePoint = (*A).into();

@@ -35,7 +35,7 @@ pub extern crate digest;
 extern crate rand_core;
 extern crate zeroize;
 #[cfg(all(target_os = "zkvm"))]
-extern crate zkm2_lib;
+extern crate zkm_lib;
 
 // Used for traits related to constant-time code.
 extern crate subtle;

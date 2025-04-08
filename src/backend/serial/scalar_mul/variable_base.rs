@@ -49,14 +49,14 @@ pub(crate) fn mul(point: &EdwardsPoint, scalar: &Scalar) -> EdwardsPoint {
 }
 
 #[cfg(all(target_os = "zkvm"))]
-use zkm2_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint};
+use zkm_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint};
 #[cfg(all(target_os = "zkvm"))]
 /// Perform constant-time, variable-base scalar multiplication.
 ///
-/// Accelerated with ZKM2's EdAdd syscall.
+/// Accelerated with zkMIPS's EdAdd syscall.
 #[allow(non_snake_case)]
 pub(crate) fn mul(point: &EdwardsPoint, scalar: &Scalar) -> EdwardsPoint {
     let mut ed_point: Ed25519AffinePoint = (*point).into();
-    ed_point.mul_assign(&zkm2_lib::utils::bytes_to_words_le(scalar.as_bytes())).expect("Scalar multiplication failed");
+    ed_point.mul_assign(&zkm_lib::utils::bytes_to_words_le(scalar.as_bytes())).expect("Scalar multiplication failed");
     ed_point.into()
 }

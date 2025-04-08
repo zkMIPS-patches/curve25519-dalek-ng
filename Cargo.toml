@@ -48,7 +48,7 @@ zeroize = { version = "1", default-features = false }
 cfg-if = "1.0"
 
 [target.'cfg(all(target_os = "zkvm"))'.dependencies]
-zkm2-lib = { git = "https://github.com/zkMIPS/zkm2.git", branch = "dev/init" }
+zkm-lib = { git = "https://github.com/zkMIPS/zkMIPS.git", branch = "zkMIPS" }
 anyhow = "1.0"
 
 [features]

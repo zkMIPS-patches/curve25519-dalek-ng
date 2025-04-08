@@ -143,7 +143,7 @@ use backend::vector::scalar_mul;
 
 cfg_if::cfg_if! {
     if #[cfg(all(target_os = "zkvm"))] {
-        use zkm2_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint, syscall_ed_decompress};
+        use zkm_lib::{ed25519::Ed25519AffinePoint, utils::AffinePoint, syscall_ed_decompress};
         use core::convert::TryInto;
 
         impl From<EdwardsPoint> for Ed25519AffinePoint {
@@ -248,7 +248,7 @@ impl CompressedEdwardsY {
     /// Returns `None` if the input is not the \\(y\\)-coordinate of a
     /// curve point.
     /// 
-    /// Accelerated with ZKM2's EdDecompress syscall.
+    /// Accelerated with zkMIPS's EdDecompress syscall.
     pub fn decompress(&self) -> Option<EdwardsPoint> {
         let mut XY_bytes = [0_u8; 64];
         XY_bytes[32..].copy_from_slice(self.as_bytes());
